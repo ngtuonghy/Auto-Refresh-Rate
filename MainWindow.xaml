@@ -1,0 +1,21 @@
+﻿<Window
+    x:Class="AutoRefreshRate.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:AutoRefreshRate"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:view="clr-namespace:AutoRefreshRate.Views"
+    Title="Auto Refresh Rate"
+    Width="610"
+    Height="510"
+    Icon="/Resources/Icons/logo.ico"
+    ResizeMode="NoResize"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
+
+    <Grid>
+
+        <view:SettingsView />
+    </Grid>
+</Window>

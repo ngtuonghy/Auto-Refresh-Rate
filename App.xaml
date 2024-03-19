@@ -1,0 +1,25 @@
+﻿<Application
+    x:Class="AutoRefreshRate.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:AutoRefreshRate"
+    xmlns:viewModel="clr-namespace:AutoRefreshRate.ViewModel"
+    Startup="App_Startup">
+    <Application.Resources>
+
+        <ResourceDictionary>
+
+            <SolidColorBrush x:Key="ContentBackgroundButtonLight" Color="#EEEEEE" />
+            <ResourceDictionary.MergedDictionaries>
+
+                <ResourceDictionary Source="Styles/CheckBox.xaml" />
+                <ResourceDictionary Source="Styles/GroupBox.xaml" />
+                <ResourceDictionary Source="Styles/TabItem.xaml" />
+                <ResourceDictionary Source="Styles/Button.xaml" />
+
+            </ResourceDictionary.MergedDictionaries>
+
+        </ResourceDictionary>
+
+    </Application.Resources>
+</Application>
