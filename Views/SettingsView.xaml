@@ -4,7 +4,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:iconPack="http://metro.mahapps.com/winfx/xaml/iconpacks"
-    xmlns:local="clr-namespace:AutoRefreshRate.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewModel="clr-namespace:AutoRefreshRate.ViewModel"
     d:DesignHeight="450"
@@ -209,8 +208,8 @@
                     VerticalAlignment="Center"
                     VerticalContentAlignment="Center"
                     DockPanel.Dock="Left">
-                    <Hyperlink NavigateUri="https://github.com/ngtuonghy">
-                        ngtuonghy
+                    <Hyperlink NavigateUri="https://github.com/ngtuonghy" RequestNavigate="Hyperlink_RequestNavigate">
+                        ngtuonghy.github
                     </Hyperlink>
                 </Label>
             </DockPanel>
