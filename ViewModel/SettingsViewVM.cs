@@ -23,7 +23,7 @@ namespace AutoRefreshRate.ViewModel
         readonly Util.FileHandler _fileHandler;
         private DisplaySpecs _displaySpecs;
         public static int _previousBatteryState = 0; // 1 is battery | 2 is plugin |  0 reset check
-                                                   
+
         public enum ChargingStatus
         {
             Charging,       // Đang sạc
@@ -121,7 +121,7 @@ namespace AutoRefreshRate.ViewModel
                 }
             }
         }
-  
+
 
         private bool _cbStartup;
         public bool cbStartup
@@ -141,18 +141,14 @@ namespace AutoRefreshRate.ViewModel
         }
 
 
-       // System.Windows.Threading.DispatcherTimer timer = new DispatcherTimer();
         private bool _labelfistLaunch = false;
         public SettingsViewVM()
         {
-            // Avoiding Errors https://learn.microsoft.com/en-us/archive/technet-wiki/29874#avoiding-errors
+            // Avoiding Errors see: https://learn.microsoft.com/en-us/archive/technet-wiki/29874#avoiding-errors
             if (DesignerProperties.GetIsInDesignMode(new DependencyObject())) return;
 
             _displaySpecs = new DisplaySpecs();
             _fileHandler = new Util.FileHandler();
-
-           //  timer.Tick += new EventHandler(timerTick);
-           //  timer.Interval = TimeSpan.FromSeconds(1);
 
             comboBoxItemsBattery = new ObservableCollection<ComboBoxItem>();
             comboBoxItemsPlugged = new ObservableCollection<ComboBoxItem>();
@@ -174,12 +170,11 @@ namespace AutoRefreshRate.ViewModel
         }
         private void updateRefresh()
         {
-            string currentRefreshRate =  getCurrentRefreshRate();
+            string currentRefreshRate = getCurrentRefreshRate();
 
             if (currentRefreshRate + " Hz" != refreshRate)
             {
                 bool canConvert = int.TryParse(currentRefreshRate, out int result);
-                //  MessageBox.Show(refreshRate);
                 refreshRate = canConvert ? result + " Hz" : currentRefreshRate + " Hz";
             }
         }
@@ -299,7 +294,6 @@ namespace AutoRefreshRate.ViewModel
         private void initializeItemsFromConfiguration()
         {
             setSave = "Save";
-            // _previousBatteryState =  getBatteryStatus(_appPath);
             if (!_labelfistLaunch)
             {
                 string[] displayArray = ConfigurationManager.AppSettings["display"].Split(',');
@@ -326,7 +320,6 @@ namespace AutoRefreshRate.ViewModel
 
             cbRefreshRate = _fileHandler.getBooleanSetting("cbRefreshRate");
             cbStartup = _fileHandler.getBooleanSetting("cbStartup");
-        //    timer.Start();
             updatePowerStatusAndIcon();
             updateRefresh();
         }
@@ -360,8 +353,6 @@ namespace AutoRefreshRate.ViewModel
         public async void changeRefeshRate(ChargingStatus powerStatus)
         {
             if (_fileHandler.getBooleanSetting("cbRefreshRate") == false) return;
-
-            // MessageBox.Show("test");
             string filePath = _appPath + @"/log.txt";
             string configPluggedItem = ConfigurationManager.AppSettings["comboBoxItemsPluggedSelected"] ?? "";
             string configBatteryItem = ConfigurationManager.AppSettings["comboBoxItemsBatterySelected"] ?? "";
@@ -400,6 +391,7 @@ namespace AutoRefreshRate.ViewModel
         public Util.RelayCommand saveCommand => new RelayCommand(execute => { save(); });
         public Util.RelayCommand defautBtnCommand => new RelayCommand(execute => { setDefault(); });
         public Util.RelayCommand getDisplay => new RelayCommand(execute => { get(); });
+
         void get()
         {
             _fileHandler.setFileDisplay(_appPath);

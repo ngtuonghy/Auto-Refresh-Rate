@@ -15,7 +15,6 @@
     mc:Ignorable="d">
 
     <Grid>
-
         <view:SettingsView />
     </Grid>
 </Window>
